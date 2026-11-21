@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b4uwjwuonrmai"]
 
 [ext_resource type="Script" uid="uid://cs813hqql1loc" path="res://player_2.gd" id="1_7mycd"]
+[ext_resource type="Texture2D" uid="uid://bup5p3dam3jyl" path="res://assets/textures/1_height.bmp" id="1_272bh"]
 [ext_resource type="Texture2D" uid="uid://dq84j7qlyowr7" path="res://assets/WarriorManIdle.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://da5gtfxxx1x1k" path="res://assets/WarriorManJump.png" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ciwnqnluiswc3" path="res://assets/WarriorManRun.png" id="4_272bh"]
@@ -8,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://gtcl6ksoe2g2" path="res://assets/WarriorManWalk.png" id="6_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35afv"]
+size = Vector2(50.125, 31)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35afv"]
 
@@ -361,21 +363,15 @@ position = Vector2(542, 455)
 scale = Vector2(8, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1922346155]
+position = Vector2(-0.0625, 5.5)
 shape = SubResource("RectangleShape2D_35afv")
 
-[node name="ColorRect" type="ColorRect" parent="Platform" unique_id=1319844961]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -20.0
-offset_right = 25.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=853462689]
+texture_repeat = 2
+position = Vector2(0, 5)
+texture = ExtResource("1_272bh")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 25)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1991486723]
 script = ExtResource("1_7mycd")
@@ -389,7 +385,7 @@ shape = SubResource("CapsuleShape2D_35afv")
 position = Vector2(548, 251)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_c8v0a")
-frame_progress = 0.5928265
+frame_progress = 0.5871855
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=224800623]
 position = Vector2(548, 251)
