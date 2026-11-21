@@ -8,6 +8,7 @@ const QUICKDROP_SPEED = 400.0
 var is_running = false
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var raycast: RayCast2D = $RayCast2D
 
 func _ready() -> void:
 	animation.play("default")
@@ -41,7 +42,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if not is_on_floor():
-		animation.play("jumping")
+		# jumping animation is wacky
+		if velocity.y < 0:
+			animation.play("jumping")
+		elif raycast.is_colliding():
+			animation.play("landing")
+		else:
+			animation.play("falling")
 	elif is_running:
 		animation.play("running")
 	elif direction: # check if direction is more than 0 or true
