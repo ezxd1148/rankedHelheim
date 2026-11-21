@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const RUNNING_SPEED = 500.0
 const JUMP_VELOCITY = -400.0
+const QUICKDROP_SPEED = 400.0
 
 var is_running = false
 
@@ -15,6 +16,9 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		#quickdrop here when player presses S so it imitates brawlhalla
+		if Input.is_key_pressed(KEY_S):
+			velocity.y = QUICKDROP_SPEED
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
